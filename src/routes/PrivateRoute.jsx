@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Navigate, useLocation,  } from 'react-router-dom';
 
-const PrivateRoute = () => {
+const PrivateRoute = ({children}) => {
+    const location=useLocation()
+    console.log(location)
+
+    const {signinuser}=useContext;
+    if(signinuser)
+    {
+        return children;
+    }
     return (
-        <div>
-            
-        </div>
+        <Navigate state={{from:location}} to={'/login'} replace></Navigate>
     );
 };
 

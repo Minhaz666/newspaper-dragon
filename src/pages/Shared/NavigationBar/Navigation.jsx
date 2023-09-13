@@ -7,7 +7,7 @@ import { FaUserCircle } from 'react-icons/fa';
 const Navigation = () => {
 
     const {signinuser , logOut}=useContext(AuthContext)
-    console.log(signinuser)
+    // console.log(signinuser)
 
     
  const handlesignout=()=>

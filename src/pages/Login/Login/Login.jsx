@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link,  useLocation, useNavigate,  } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import app from '../../../firebase/firebase.config';
@@ -9,7 +9,11 @@ import app from '../../../firebase/firebase.config';
 
 const Login = () => {
     const auth = getAuth(app)
-    
+    const navigate=useNavigate()
+    const location=useLocation()
+    const from=location.state?.from?.pathname || '/categorie/0'
+    console.log(from)
+
 
     const {signIn}=useContext(AuthContext);
 
@@ -28,11 +32,8 @@ const Login = () => {
         // console.log(name,photo,email,password)
         signIn(email,password)
         .then((result)=>{
-            // console.log(result.user)
-            // observer for getg user 
-            const userup=result.user;
-
             setSuccess('successfully login')
+            navigate(from , {replace:true})
         })
         .catch((error)=>{
             const errorMessage =error.message
