@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         children:[
             {
             path:'/',
-            element:<Navigate to={'/categorie'}></Navigate>,
+            element:<Navigate to={'/categorie/0'}></Navigate>,
 
             },
 
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             {
                 path:'/categorie/:id',
                 element:<Categories></Categories>,
-                loader:({params})=>{ return fetch(`http://localhost:5000/categories/${params.id}`)}
+                loader:({params})=>{ return fetch(`https://the-news-dragon-server-mplkzlzdp-minhaz666.vercel.app/categories/${params.id}`)}
             },
 
 
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
             {
                 path:'/news/:id',
                 element:<PrivateRoute><News></News></PrivateRoute>,
-                loader:({params})=>{return fetch(`http://localhost:5000/news/${params.id}`)}
+                loader:({params})=>{return fetch(`https://the-news-dragon-server-mplkzlzdp-minhaz666.vercel.app/news/${params.id}`)}
             }
         ]
 

@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import EditorsInsights from './EditorsInsights';
 
 const News = () => {
-
+    document.title='news'
     const news=useLoaderData();
     const {_id,title,details,image_url,category_id}=news;
 
